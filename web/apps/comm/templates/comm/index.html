@@ -1,0 +1,18 @@
+<html>
+<head>
+    <meta http-equiv="refresh" content="2">
+    <title>---Python---</title>
+</head>
+<body>
+    <a href=""><center>.....Read the data from the mysql.....</center></a><br/>
+    <a href="{% url 'addarticle' %}">Add</a>
+<ul>
+    {% for til in titles %}
+		<li>{{til.id}}:{{til.name}} {{til.option}}  <a href="{% url 'delarticle' til.id %}">Delete</a></li> 
+    {% endfor %}
+</ul>
+<h2><center>---Python---</center></h2>
+<br/>
+
+</body>
+</html>
