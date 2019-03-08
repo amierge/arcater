@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>home</title>
+	<meta charset="utf-8">
+</head>
+<body>
+    <a href="{% url 'add_stock' %}">Add</a> 
+	<table width="75%" border=0.1px solid black cellpadding="0" cellspacing="1" bgcolor="black">
+	    <tr bgcolor="pink">
+			<td height="33"><div align="center"><strong>物料编号</strong></div></td>
+			<td><div align="center"><strong>物料类别</strong></div></td>
+			<td><div align="center"><strong>物料名称</strong></div></td>
+			<td><div align="center"><strong>物料封装</strong></div></td>
+			<td><div align="center"><strong>备注</strong></div></td>
+			<td><div align="center"><strong>修改</strong></div></td>
+		</tr>
+		{% for stock in stock_db %}
+		<tr bgcolor="white">
+				<td height="22" align="center">{{stock.id}}  </td>
+				<td height="22" align="center">{{stock.name}} </td>
+				<td height="22" align="center">{{stock.option}} </td>
+				<td height="22" align="center">4</td>
+				<td height="22" align="center">5</td>
+				<td height="22" align="center"> 
+					<a href="{% url 'delete_stock' stock.id %}">Delete</a> 
+					<a href="{% url 'modify_stock' stock.id %}">Modify</a> 
+				</td>
+				 
+		</tr>
+		{% endfor %}
+	</table>
+</body>
+</html>

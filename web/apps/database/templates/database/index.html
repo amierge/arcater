@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>database</title>
+</head>
+<body>
+     {% if db_table %}
+            <a>Add Database:</a>
+            <form action="/database/add_database" method="POST" enctype="multipart/form-data">
+            <input type="text" name="add_db_name" placeholder="add_db_name" />
+            <input type="submit" value="submit"/></form>
+            
+            <a>datbases lists:</a>
+            <table width="60%" border=0.1px solid black cellpadding="0" cellspacing="1" bgcolor="black">
+            <tr bgcolor="pink">
+                <td height="33"><div align="center"><strong>db name</strong></div></td>
+            	<td><div align="center"><strong>    Del db    </strong></div></td>
+            	<td><div align="center"><strong>    Show Table   </strong></div></td>
+            	<td><div align="center"><strong>    Text   </strong></div></td>
+            	<td><div align="center"><strong>    Text   </strong></div></td>
+            </tr>
+               {% for db_name in db_lists %}
+               <tr bgcolor="white">
+            	<td height="22" align="center">{{db_name.name}}  </td>
+            	<td height="22" align="center"><a href="{% url 'del_database' db_name.name %}"> Delete database </a></td>
+            	<td height="22" align="center"><a href="{% url 'show_table' db_name.name %}"> Show tables </a></td>
+            	<td height="22" align="center">   </td>
+            	<td height="22" align="center">   </td>
+            </tr>	
+            {% endfor %}
+            </table>
+    {% else %}
+            <a href="#"></a>
+            <a href="#"></a>
+    {% endif %}
+	
+    {% if show_table %}
+    <a>Add Table:</a>
+	<form action="/database/{{show_db_name}}/add_table" method="POST" enctype="multipart/form-data">
+	<input type="text" name="add_table_name" placeholder="add_table_name" />
+	<input type="submit" value="submit"/></form>
+	
+	<table width="60%" border=0.1px solid black cellpadding="0" cellspacing="1" bgcolor="black">
+	<tr bgcolor="pink">
+	    <td height="33"><div align="center"><strong>table name</strong></div></td>
+		<td><div align="center"><strong>    Del table    </strong></div></td>
+		<td><div align="center"><strong>    Show column   </strong></div></td>
+		<td><div align="center"><strong>    Text   </strong></div></td>
+		<td><div align="center"><strong>    Text   </strong></div></td>
+	</tr>	
+	{% for table_list in table_lists %}
+    <tr bgcolor="white">
+		<td height="22" align="center">{{table_list}}  </td>
+		<td height="22" align="center"><a href="{% url 'del_table' show_db_name table_list %}" >Delete table </a></td>
+        <td height="22" align="center"><a href="{% url 'show_column' show_db_name table_list %}" >Show column </a></td>
+		<td height="22" align="center"> 3  </td>
+		<td height="22" align="center"> 3  </td>
+	</tr>	
+	{% endfor %}
+	{% endif %}
+	
+	{% if show_column %}
+	<a>Add column:</a>	<br>
+	<form action="/database/{{show_db_name}}/{{show_table_name}}/add_column_char" method="POST" enctype="multipart/form-data">
+	<input type="text" name="add_cloumn_name" placeholder="add_cloumn_name" />
+	<input type="submit" value="submit"/></form>
+	<form action="/database/{{show_db_name}}/{{show_table_name}}/add_column_num" method="POST" enctype="multipart/form-data">
+	<input type="text" name="add_cloumn_name" placeholder="add_cloumn_name" />
+	<input type="submit" value="submit"/></form>
+	<table width="60%" border=0.1px solid black cellpadding="0" cellspacing="1" bgcolor="black">
+	<tr bgcolor="pink">
+	    <td height="33"><div align="center"><strong>column name</strong></div></td>
+		<td><div align="center"><strong>    column type    </strong></div></td>
+		<td><div align="center"><strong>    Del column   </strong></div></td>
+		<td><div align="center"><strong>    Text   </strong></div></td>
+		<td><div align="center"><strong>    Text   </strong></div></td>
+	</tr>	
+	{% for column_list in column_lists %}
+    <tr bgcolor="white">
+		<td height="22" align="center">{{column_list}}  </td>
+		<td height="22" align="center">  1 </td>
+        <td height="22" align="center"><a href="{% url 'del_column' show_db_name show_table_name column_list %}" >del_column </a></td>
+		<td height="22" align="center">  1 </td>
+		<td height="22" align="center"> 3  </td>
+		<td height="22" align="center"> 3  </td>
+	</tr>	
+	{% endfor %}
+	{% endif %}
+
+</body>
+</html>
