@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'comm'
+    'comm',
+    'home',
+    'database',
+    'index'
 ]
 
 MIDDLEWARE = [
@@ -86,10 +89,9 @@ DATABASES = {
         'USER':'root',
         'PASSWORD':'xxxx',
         'HOST':'localhost',
-        'PORT':'3306',
+        'PORT':'xxxx',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -113,7 +115,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+#LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-Hans'
 
 TIME_ZONE = 'UTC'
 

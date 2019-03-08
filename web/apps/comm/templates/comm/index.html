@@ -8,7 +8,7 @@
     <a href="{% url 'addarticle' %}">Add</a>
 <ul>
     {% for til in titles %}
-		<li>{{til.id}}:{{til.name}} {{til.option}}  <a href="{% url 'delarticle' til.id %}">Delete</a></li> 
+		{{til.id}}:{{til.name}} {{til.option}}  <a href="{% url 'delarticle' til.id %}">Delete</a>
     {% endfor %}
 </ul>
 <h2><center>---Python---</center></h2>
